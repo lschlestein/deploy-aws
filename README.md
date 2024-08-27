@@ -112,7 +112,48 @@ Copiar o comando ssh, para fazer a conexão:
 
 Conectando a instância:
 Suas credencias serão necessárias:
-![image](https://github.com/user-attachments/assets/6eafcd58-f71c-4ac5-8ae3-ce4152314b3d)
+![image](https://github.com/user-attachments/assets/0d4fef4a-c9ba-4408-9cba-c8b98925eafb)
+
+## Instalando o JRE na VM
+Conectado a VM, agora para rodar nossa aplicação, precisaremos da JRE do Java, para executar nossa aplicação.
+Para instalar a JRE 17, basta executar o seguinte comando:
+``` bash
+sudo yum install java-17-amazon-corretto-headless
+```
+![image](https://github.com/user-attachments/assets/d2d62d08-87c3-460e-87f8-9b13a79efbef)
+
+
+Siga os passos necessários para concluir a instalação.
+
+Com a instalação, da JRE, basta agora, copiarmos a nossa aplica(.jar) de nosso projeto, para a nossa instância.
+- Empacotar o jar, no nosso caso utilizando o Maven
+![image](https://github.com/user-attachments/assets/a6db29a2-f9a5-404d-bb5b-3e740560b58a)
+
+Em seguida, copiar o jar, da nossa máquina para a VM.
+
+É importante se atentar, que o comando deve ser executado no terminal de nossa máquina, onde está o nosso projeto, e não na VM da Amazon.
+```bash
+scp meu-projeto.jar ec2-user@meu-ip-ou-meu-dns:/home/ec2-user
+```
+![image](https://github.com/user-attachments/assets/4e81fd50-9ef8-4b99-a5b2-53a4561dd378)
+
+Em seguida, podemos verificar se o arquivo estão em nossa VM, conectando novamente via SSH e listando os arquivos na /home do ec2-user.
+```bash
+ls
+```
+![image](https://github.com/user-attachments/assets/2a90a164-24d4-4ae0-82b9-7ad134071911)
+
+Em seguida podemos executar nossa aplicação:
+```bash
+java -jar meu-jar.jar
+```
+![image](https://github.com/user-attachments/assets/33af70b5-8469-42cc-a323-b1758d12aa3b)
+
+Para verificar se aplicação está publicada, podemos acessa-la através de seu IP, na porta 8080:
+
+![image](https://github.com/user-attachments/assets/4664633e-5d9b-44fb-8ff4-f2847ebb35dc)
+
+
 
 
 
