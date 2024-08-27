@@ -1,4 +1,4 @@
-# deploy-aws
+# Fazendo Deploy na AWS (Amazon Cloud Services)
 Passo-a-passo para subir um projeto na AWS
 
 Esse repositório tem como objetivo mostrar um exemplo básico e prático para colocar um produção qualquer projeto na AWS.
@@ -27,4 +27,105 @@ Precisaremos efetuar as seguintes configurações, antes da criação de nossa m
 - Criar e configurar uma nova VPC (Virtual Private Cloud).
 - Criar e configurar um novo Security Group, ou grupo de segurança.
 - Criar e configurar uma nova instância EC2.
+
+### Criar e configurar uma nova VPC (Virtual Private Cloud).
+
+Faça login em sua conta da AWS, e o seguinte console deverá ser apresentado:
+![image](https://github.com/user-attachments/assets/73c8e90b-48e1-4db2-8164-8745d1be5837)
+
+Na barra superior digite vpc, para criarmos a nossa:
+![image](https://github.com/user-attachments/assets/4ca3fce5-dc0c-4318-a948-b6d9810ae072)
+![image](https://github.com/user-attachments/assets/363bbc75-3909-47ab-8428-5e21acafaa73)
+
+Selecione VPC e muito mais.
+![image](https://github.com/user-attachments/assets/0ffaa9aa-2096-443a-8012-a41c3c87b90c)
+
+
+
+
+De um nome para sua VPC, nenhuma outra configuração é necessária aqui.
+![image](https://github.com/user-attachments/assets/ae149b63-888f-4c2a-b0f7-eb08d116efc6)
+
+Clique em Criar VPC
+![image](https://github.com/user-attachments/assets/b2daab18-0802-471d-8afc-60b2bc477c1f)
+
+Verificando VPC criada
+![image](https://github.com/user-attachments/assets/e2047358-34c9-486f-990c-ef1e764a3e53)
+
+## Configurando um novo Security Group
+Na barra superior, busque por Security Groups
+![image](https://github.com/user-attachments/assets/dac30ce0-5995-48b1-82a9-a02a4fc8069f)
+
+Clique em Criar grupo de segurança
+![image](https://github.com/user-attachments/assets/eaa7b1b6-d2ee-44f2-b41c-56b49afa001d)
+
+De um nome, ao seu grupo de segurança, e atrele o mesmo, a VPC criada anteriormente:
+![image](https://github.com/user-attachments/assets/f1e797d5-af8d-43b9-8459-f303f4691cbf)
+
+Por padrão, na criação de um grupo de segurança novo, somente o tráfego de saída, ou seja VM->Internet é liberado. O tráfego de entrada é totalmente restrito e precisar ser liberado.
+
+Precisaremos liberar a porta 22 (SSH), para acessarmos o console de nossa VM remotamente, e também, a porta 8080, que nesse caso específico, é a porta utilizada por nossa aplicação.
+![image](https://github.com/user-attachments/assets/78ff0115-9639-40ce-804d-52f814899ad4)
+Como deixamos o acesso irrestrito a essas portas (0.0.0.0/0) recebemos um aviso. É possível, caso os IP's que farão o acesso a VW sejam conhecidos, restringir esse acesso a somente alguns IP's.
+
+Configurados os acesso, é so clicar em criar grupo de segurança:
+![image](https://github.com/user-attachments/assets/176e22e6-fb4e-4a8b-8a97-abc53f39cccf)
+
+Grupo de segurança criado.
+![image](https://github.com/user-attachments/assets/3867580d-de45-4917-a900-2d6d8294081c)
+
+## Configurando uma Máquina Virtual (VM)
+Após criarmos nossa VPC, e um Security Group, podemos criar a nossa VM.
+
+Para isso, busque por EC2, na barra superior:
+![image](https://github.com/user-attachments/assets/22ed9236-5b38-44e4-a6b0-be87b3c7ae16)
+
+Ao acessar o painel de controle, clique em Excecutar instância:
+![image](https://github.com/user-attachments/assets/7bad5800-a5c8-4e1a-8d66-90a2dca69ea7)
+
+De um nome a sua nova instância (VM)
+![image](https://github.com/user-attachments/assets/78fffb07-b895-4bef-8e55-9150f0f48623)
+
+Vamos utilizar o Amazon Linux, que é o SO padrão pré selecionado:
+![image](https://github.com/user-attachments/assets/97074f5b-35a2-4f10-a5a7-afa5dc3736ab)
+
+Aqui é necessário indicar qual será o par de chaves SSH a ser utilizado.
+
+Caso não tenha nenhuma cadastrado, procure a opção Keys Pairs para importar o seu par de chaves, criado anteriormente.
+![image](https://github.com/user-attachments/assets/7676312b-5454-4509-bb6d-9aa2364c9ff4)
+
+Precisamos editar as configurações de rede de nossa VM, para atrelar nossa VPC, Security Group e IP externos, clicando em editar:
+![image](https://github.com/user-attachments/assets/a6ba6a66-4dc7-45e4-974a-aea0ef1b7009)
+
+Certifcar-se, de que a instância está configurada em uma Sub-net public, e que Atribuir IP público está em Habilitar. Também selecionar a VPC e o Security Group anteriormente criados.
+
+Feitas as configurações da instância, podemos executar-lá, clicando em Executar instância:
+![image](https://github.com/user-attachments/assets/442c5801-5bff-4c9f-8b56-13e1b1394837)
+
+Tela após a criação da instância:
+![image](https://github.com/user-attachments/assets/25bcf174-38e7-463b-826f-be93fbf3357a)
+
+Para verifcarmos se as configurações estão funcionando corretamente, podemos fazer a conexão via SSH, a nossa instância.
+Para isso basta clicar em Conectar à sua instância:
+Copiar o comando ssh, para fazer a conexão:
+![image](https://github.com/user-attachments/assets/77fd6fc2-4413-4ae8-aa0b-d2cb140a0660)
+
+Conectando a instância:
+Suas credencias serão necessárias:
+![image](https://github.com/user-attachments/assets/6eafcd58-f71c-4ac5-8ae3-ce4152314b3d)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
