@@ -108,7 +108,7 @@ Tela após a criação da instância:
 Para verifcarmos se as configurações estão funcionando corretamente, podemos fazer a conexão via SSH, a nossa instância.
 Para isso basta clicar em Conectar à sua instância:
 Copiar o comando ssh, para fazer a conexão:
-![image](https://github.com/user-attachments/assets/77fd6fc2-4413-4ae8-aa0b-d2cb140a0660)
+![image](https://github.com/user-attachments/assets/0ce47de1-5de8-45fd-92de-d813f2e78c52)
 
 Conectando a instância:
 Suas credencias serão necessárias:
