@@ -153,6 +153,8 @@ Para verificar se aplicação está publicada, podemos acessa-la através de seu
 
 ![image](https://github.com/user-attachments/assets/4664633e-5d9b-44fb-8ff4-f2847ebb35dc)
 
+Agora basta acessar [http://meu-ip:8080/meu-endpoint](http://meu-ip:8080/meu-endpoint)
+
 
 
 
