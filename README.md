@@ -154,6 +154,7 @@ Para verificar se aplicação está publicada, podemos acessa-la através de seu
 Agora basta acessar [http://meu-ip:8080/meu-endpoint](http://meu-ip:8080/meu-endpoint)
 
 
+
 Material complementar:
 
 [Fazendo Deploy na AWS](https://www.youtube.com/watch?v=bEkCdlrxF54&t=1117s&pp=ygUKZGVwbG95IGF3cw%3D%3D)
